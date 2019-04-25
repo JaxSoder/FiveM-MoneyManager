@@ -8,13 +8,14 @@ using CitizenFX.Core.UI;
 using CitizenFX.Core.Native;
 using static CitizenFX.Core.Native.API;
 
-namespace MoneyManager
+namespace MoneyManagerMain
 {
-    public class Main : BaseScript
+    public class MoneyManagerMain : BaseScript
     {
-        public int current_money;
+        public int wallet_money;
+        public int bank_money;
 
-        public Main()
+        public MoneyManagerMain()
         {
             DisplayMoneyText();
         }
@@ -23,22 +24,31 @@ namespace MoneyManager
         {
             while (true)
             {
-                DrawMoneyText("~g~$~w~" + current_money);
+                DrawMoneyText("~g~$~w~" + wallet_money);
                 await Delay(5);
             }
         }
 
-
-        public void AddMoney(int money_to_add)
+        public void AddMoneyToWallet(int money_to_add)
         {
             Screen.ShowNotification("Given " + "~g~$" + money_to_add + "~w~");
-            current_money = current_money + money_to_add;
+            wallet_money = wallet_money + money_to_add;
         }
 
-        public void TakeMoney(int money_to_take)
+        public void TakeMoneyFromWallet(int money_to_take)
         {
             Screen.ShowNotification("Taken " + "~g~$" + money_to_take + "~w~");
-            current_money = current_money + money_to_take;
+            wallet_money = wallet_money + money_to_take;
+        }
+
+        public void AddMoneyToBank(int money_to_add)
+        {
+
+        }
+
+        public void TakeMoneyFromBank(int money_to_take)
+        {
+
         }
 
         private static void DrawMoneyText(string text)
