@@ -17,6 +17,7 @@ namespace MoneyManagerMain
 
         public MoneyManagerMain()
         {
+            CreateHandlers();
             DisplayMoneyText();
         }
 
@@ -51,9 +52,14 @@ namespace MoneyManagerMain
 
         }
 
+        public void CreateHandlers()
+        {
+            EventHandlers["Add_Money_To_Wallet"] += new Action<int>(AddMoneyToWallet);
+        }
+
         private static void DrawMoneyText(string text)
         {
-            DrawMoneyTextHandler(text, 23, false, 0.93f, 0.05f, 0.8f, 255, 255, 255, 255);
+            DrawMoneyTextHandler(text, 4, false, 0.93f, 0.05f, 0.8f, 255, 255, 255, 255);
         }
 
         private static void DrawMoneyTextHandler(string text, int font, bool center, float x, float y, float scale, int r, int g, int b, int a)
